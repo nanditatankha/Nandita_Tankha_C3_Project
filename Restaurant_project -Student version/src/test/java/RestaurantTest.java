@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class RestaurantTest {
     Restaurant restaurant;
-    public void restaurant_adding_for_testing(){
+    public void test(){
         restaurant = service.addRestaurant("Amelie's cafe","Bangalore",LocalTime.parse("9:00:00"),LocalTime.parse("24:00:00"));
         service.addRestaurant("SOHO","Mumabi",LocalTime.parse("09:00:00"),LocalTime.parse("23:00:00"));
         restaurant.addToMenu("Noodles",130);
@@ -15,14 +15,14 @@ class RestaurantTest {
     }
     @Test
     public void is_restaurant_open_should_return_true_if_time_is_between_opening_and_closing_time(){
-        restaurantCreation();
+        test();
         restaurant.setClosingTime(LocalTime.now().plusMinutes(20));
         assertTrue(restaurant.isRestaurantOpen());
     }
 
     @Test
     public void is_restaurant_open_should_return_false_if_time_is_outside_opening_and_closing_time(){
-        restaurantCreation();
+        test();
         restaurant.setClosingTime(LocalTime.now().minusMinutes(20));
         assertFalse(restaurant.isRestaurantOpen());
     }
